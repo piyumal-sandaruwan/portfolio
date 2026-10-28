@@ -1,5 +1,5 @@
 
-name: Portfolio Docker CI
+name: Portfolio Docker CI/CD
 
 on:
   push:
@@ -10,9 +10,15 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+env:
+  IMAGE_NAME: piyumalsandaruwan/piyumal-portfolio
+
 jobs:
   docker-build:
-    name: Build Docker Image
+    name: Build and Publish Docker Image
     runs-on: ubuntu-latest
 
     steps:
@@ -22,9 +28,57 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Login to Docker Hub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build Docker image
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: false
-          tags: piyumal-portfolio:ci
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            piyumalsandaruwan/piyumal-portfolio:latest
+            piyumalsandaruwan/piyumal-portfolio:${{ github.sha }}
+
+  deploy:
+    name: Deploy Portfolio to EC2
+    needs: docker-build
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy portfolio container
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          timeout: 30s
+          command_timeout: 3m
+          script: |
+            set -eu
+
+            docker pull piyumalsandaruwan/piyumal-portfolio:latest
+
+            docker rm -f piyumal-portfolio 2>/dev/null || true
+
+            docker run -d \
+              --name piyumal-portfolio \
+              --restart unless-stopped \
+              -p 127.0.0.1:3001:3000 \
+              piyumalsandaruwan/piyumal-portfolio:latest
+
+            for i in $(seq 1 20); do
+              if curl -fsS http://127.0.0.1:3001/ >/dev/null; then
+                echo "Portfolio deployment successful!"
+                exit 0
+              fi
+              sleep 3
+            done
+
+            docker logs --tail 100 piyumal-portfolio
+            exit 1
