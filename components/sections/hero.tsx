@@ -1,44 +1,11 @@
 
 "use client";
 
-import {
-  motion,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 
-import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUpRight,
-  Cloud,
-  Code2,
-  Network,
-  ShieldCheck,
-  TerminalSquare,
-} from "lucide-react";
-
-const nodes = [
-  {
-    name: "CLOUD",
-    Icon: Cloud,
-    place: "left-0 top-[15%]",
-  },
-  {
-    name: "CI / CD",
-    Icon: TerminalSquare,
-    place: "right-0 top-[24%]",
-  },
-  {
-    name: "NETWORKS",
-    Icon: Network,
-    place: "bottom-[18%] left-[2%]",
-  },
-  {
-    name: "SECURITY",
-    Icon: ShieldCheck,
-    place: "bottom-[8%] right-[2%]",
-  },
-];
+import { HeroContent } from "./hero-content";
+import { HeroVisual } from "./hero-visual";
 
 export function Hero() {
   const reduced = useReducedMotion();
@@ -48,6 +15,7 @@ export function Hero() {
       id="home"
       className="relative flex min-h-[760px] items-center overflow-hidden pb-20 pt-32"
     >
+      {/* Background glows */}
       <div className="glow left-[12%] top-[22%]" />
 
       <div
@@ -55,152 +23,20 @@ export function Hero() {
         style={{ background: "#8b5cf6" }}
       />
 
+      {/* Left content + right visualization */}
       <div className="container grid items-center gap-14 lg:grid-cols-[1.12fr_.88fr]">
-        {/* Hero content */}
-        <div className="relative z-10">
-          <motion.div
-            initial={reduced ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-7 inline-flex items-center rounded-full border border-cyan-300/20 bg-cyan-300/[.06] px-3 py-2 font-mono text-[10px] tracking-[.13em] text-cyan-100"
-          >
-            <span className="mr-2 h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_#58f3ff]" />
-            CLOUD / DEVOPS / SOFTWARE
-          </motion.div>
-
-          <p className="mb-4 font-mono text-sm text-slate-400">
-            Hello, world. I&apos;m
-          </p>
-
-          <motion.h1
-            initial={reduced ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-5xl font-black leading-[.98] tracking-[-.065em] sm:text-7xl xl:text-[5.4rem]"
-          >
-            Piyumal
-            <br />
-            <span className="gradient">Sandaruwan.</span>
-          </motion.h1>
-
-          <p className="mt-7 text-sm text-slate-400 sm:text-base">
-            Building in the space between{" "}
-            <b className="text-cyan-200">code</b> /{" "}
-            <b className="text-violet-300">cloud</b> /{" "}
-            <b className="text-slate-100">automation.</b>
-          </p>
-
-          <p className="mt-5 max-w-xl text-sm leading-8 text-slate-400 sm:text-base">
-            BICT (Hons) undergraduate exploring cloud infrastructure,
-            DevOps practices, networking, and secure software delivery
-            — turning complex systems into reliable solutions.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#projects" className="button primary">
-              Explore my work <ArrowRight size={16} />
-            </a>
-
-            <a href="#contact" className="button secondary">
-              Get in touch <ArrowUpRight size={15} />
-            </a>
-          </div>
-
-          <div className="mt-12 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/[.07] pt-6 text-[11px] text-slate-500">
-            <span>● Cloud &amp; DevOps</span>
-            <span>● Full-stack development</span>
-            <span>● Networking &amp; security</span>
-          </div>
-        </div>
-
-        {/* Engineering visualization */}
-        <motion.div
-          initial={reduced ? false : { opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative mx-auto w-full max-w-[460px]"
-        >
-          <div className="glass relative aspect-square rounded-[32px] p-5 sm:p-7">
-            {/* Window header */}
-            <div className="flex items-center justify-between border-b border-white/[.08] pb-4">
-              <div className="flex gap-1.5">
-                <i className="h-2 w-2 rounded-full bg-rose-400" />
-                <i className="h-2 w-2 rounded-full bg-amber-300" />
-                <i className="h-2 w-2 rounded-full bg-emerald-300" />
-              </div>
-
-              <span className="font-mono text-[9px] tracking-[.18em] text-slate-500">
-                SYSTEM / PROFILE
-              </span>
-            </div>
-
-            {/* Animated system visualization */}
-            <div className="relative flex h-[calc(100%-48px)] items-center justify-center">
-              <div className="absolute h-[88%] w-[88%] rounded-full border border-dashed border-violet-300/15" />
-
-              <div className="absolute h-[68%] w-[68%] rounded-full border border-cyan-200/15" />
-
-              {/* Center element */}
-              <div className="relative z-10 flex h-36 w-36 flex-col items-center justify-center rounded-[30px] border border-cyan-200/25 bg-[#0b1724]/90 shadow-[0_0_70px_rgba(88,243,255,.12)] sm:h-44 sm:w-44">
-                <Code2
-                  size={43}
-                  strokeWidth={1.2}
-                  className="text-cyan-200"
-                />
-
-                <span className="mt-3 font-mono text-[10px] tracking-[.22em] text-slate-400">
-                  ENGINEER.MODE
-                </span>
-
-                <span className="mt-1 text-[9px] text-emerald-300">
-                  ● SYSTEM ONLINE
-                </span>
-              </div>
-
-              {/* Floating technology nodes */}
-              {nodes.map(({ name, Icon, place }, i) => (
-                <motion.div
-                  key={name}
-                  animate={
-                    reduced ? undefined : { y: [0, -6, 0] }
-                  }
-                  transition={{
-                    duration: 4 + i * 0.3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className={`absolute ${place} flex items-center gap-2 rounded-xl border border-white/10 bg-[#0b101c]/95 px-3 py-2.5`}
-                >
-                  <Icon size={14} className="text-cyan-200" />
-
-                  <span className="font-mono text-[9px] tracking-wider text-slate-300">
-                    {name}
-                  </span>
-                </motion.div>
-              ))}
-
-              {/* System status footer */}
-              <div className="absolute bottom-0 left-0 right-0 flex justify-between border-t border-white/[.07] pt-4 font-mono text-[9px] text-slate-600">
-                <span>LATENCY: OPTIMIZED</span>
-                <span>BUILD: IN PROGRESS</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-4 flex justify-between px-2 font-mono text-[9px] tracking-[.16em] text-slate-600">
-            <span>FIG 01 — ENGINEERING MINDSET</span>
-            <span>v1.0.0</span>
-          </div>
-        </motion.div>
+        <HeroContent reduced={!!reduced} />
+        <HeroVisual reduced={!!reduced} />
       </div>
 
       {/* Scroll indicator */}
       <a
         href="#about"
         aria-label="Scroll to about"
-        className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-[9px] tracking-[.2em] text-slate-600 hover:text-cyan-200 sm:flex"
+        className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-[9px] tracking-[.2em] text-slate-600 transition-colors hover:text-cyan-200 sm:flex"
       >
-        SCROLL TO EXPLORE <ArrowDown size={13} />
+        SCROLL TO EXPLORE
+        <ArrowDown size={13} />
       </a>
     </section>
   );
