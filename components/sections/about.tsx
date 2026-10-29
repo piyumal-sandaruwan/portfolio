@@ -1,36 +1,24 @@
 
 "use client";
 
-import {
-  ArrowUpRight,
-  Braces,
-  CheckCircle2,
-  Compass,
-  Layers3,
-  Terminal,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { focusAreas } from "@/data/portfolio";
 
-const icons = [Layers3, Braces, Compass];
-
-const principles = [
-  "Hands-on learning",
-  "Automation mindset",
-  "Continuous improvement",
+const learningTopics = [
+  "Kubernetes",
+  "Terraform",
+  "Ansible",
+  "Cloud Infrastructure",
 ];
 
 export function About() {
   return (
-    <section id="about" className="section relative overflow-hidden">
-      {/* Subtle section background */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-32 top-32 h-72 w-72 rounded-full bg-cyan-400/[0.04] blur-[100px]"
-      />
-
+    <section
+      id="about"
+      className="section relative overflow-hidden"
+    >
       <div className="container relative">
         {/* Section heading */}
         <Reveal>
@@ -42,127 +30,132 @@ export function About() {
           />
         </Reveal>
 
-        <div className="grid gap-5 lg:grid-cols-[1.05fr_.95fr]">
-          {/* Main introduction card */}
+        {/* Balanced two-column layout */}
+        <div className="mt-12 grid grid-cols-1 gap-12 lg:mt-16 lg:grid-cols-2 lg:gap-16">
+
+          {/* LEFT: Mindset and current focus */}
           <Reveal>
-            <div className="glass group relative h-full overflow-hidden rounded-3xl p-6 transition-colors duration-300 hover:border-cyan-300/20 sm:p-9">
-              {/* Decorative corner accent */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute right-0 top-0 h-36 w-36 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.10),transparent_70%)]"
-              />
+            <div className="flex h-full flex-col">
+              <div>
+                <p className="mb-5 font-mono text-[10px] tracking-[0.2em] text-cyan-300">
+                  / MY APPROACH
+                </p>
 
-              <div className="relative">
-                {/* Card label */}
-                <div className="mb-7 flex items-center justify-between gap-4">
-                  <span className="font-mono text-[10px] tracking-[.2em] text-cyan-200">
-                    / THE APPROACH
-                  </span>
-
-                  <Terminal
-                    size={18}
-                    strokeWidth={1.5}
-                    className="text-slate-600 transition-colors group-hover:text-cyan-200"
-                  />
-                </div>
-
-                <h3 className="max-w-md text-2xl font-bold leading-tight tracking-tight text-slate-100 sm:text-3xl">
-                  Build it.
-                  <span className="text-slate-500"> Understand it.</span>
-                  <span className="block text-cyan-200">
-                    Improve it.
+                <h3 className="max-w-md text-3xl font-semibold leading-tight tracking-tight text-slate-100 sm:text-4xl">
+                  Build. Automate.
+                  <span className="block text-slate-400">
+                    Learn. Deploy.
                   </span>
                 </h3>
 
-                <p className="mt-6 text-sm leading-8 text-slate-400">
-                  I&apos;m a BICT (Hons) undergraduate at the University
-                  of Colombo with an interest in cloud engineering,
-                  DevOps, networking, cybersecurity, and full-stack
-                  development. I learn by building practical projects,
-                  troubleshooting real issues, and improving systems
-                  step by step.
+                <p className="mt-6 max-w-lg text-sm leading-7 text-slate-400 sm:text-base sm:leading-8">
+                  My learning style is practical: build a system,
+                  understand how it works, automate the repetitive
+                  parts, and keep improving.
                 </p>
+              </div>
 
-                {/* Working principles */}
-                <div className="mt-8 border-t border-white/[0.08] pt-6">
-                  <p className="mb-4 font-mono text-[9px] tracking-[.18em] text-slate-600">
-                    WORKING PRINCIPLES
-                  </p>
+              {/* Engineering mindset */}
+              <div className="mt-8 flex items-center gap-3 font-mono text-[9px] tracking-[0.17em] text-slate-500">
+                <span className="text-cyan-300">&gt;_</span>
+                <span>ENGINEERING MINDSET</span>
+                <span className="h-px flex-1 bg-white/10" />
+                <span>01 / 04</span>
+              </div>
 
-                  <div className="flex flex-wrap gap-2">
-                    {principles.map((principle) => (
-                      <span
-                        key={principle}
-                        className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-2 text-[11px] text-slate-300 transition-colors hover:border-cyan-300/25 hover:bg-cyan-300/[0.04]"
-                      >
-                        <CheckCircle2
-                          size={13}
-                          className="text-cyan-300"
-                        />
-                        {principle}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              {/* Current focus */}
+              <div className="mt-10 flex-1 border-t border-white/10 pt-6">
+                <div className="flex items-center justify-between gap-4">
+                  <h4 className="font-mono text-[10px] tracking-[0.18em] text-slate-500">
+                    CURRENT FOCUS
+                  </h4>
 
-                {/* Bottom signature */}
-                <div className="mt-8 flex items-center justify-between border-t border-white/[0.08] pt-5">
-                  <span className="font-mono text-[9px] tracking-[.14em] text-slate-600">
-                    LEARN / BUILD / ITERATE
+                  <span className="flex items-center gap-2 font-mono text-[9px] tracking-wider text-cyan-300">
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
+                    LEARNING
                   </span>
-
-                  <ArrowUpRight
-                    size={17}
-                    className="text-slate-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyan-200"
-                  />
                 </div>
+
+                <p className="mt-5 max-w-lg text-sm leading-7 text-slate-400">
+                  Developing practical skills in DevOps, cloud
+                  infrastructure, container orchestration and
+                  infrastructure automation.
+                </p>
               </div>
             </div>
           </Reveal>
 
-          {/* Focus area cards */}
-          <div className="grid content-start gap-4">
-            {focusAreas.map((item, index) => {
-              const Icon = icons[index] ?? Layers3;
+          {/* RIGHT: Background and learning roadmap */}
+          <Reveal delay={0.1}>
+            <div className="flex h-full flex-col">
+              <div>
+                <p className="mb-5 font-mono text-[10px] tracking-[0.2em] text-cyan-300">
+                  / BACKGROUND
+                </p>
 
-              return (
-                <Reveal key={item.number} delay={index * 0.08}>
-                  <article className="glass group relative flex gap-4 overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-white/[0.035] sm:p-6">
-                    {/* Hover accent */}
-                    <div
-                      aria-hidden="true"
-                      className="absolute bottom-0 left-0 h-px w-0 bg-cyan-300/60 transition-all duration-500 group-hover:w-full"
-                    />
+                <p className="text-xl leading-relaxed tracking-tight text-slate-200 sm:text-2xl">
+                  I&apos;m a BICT (Hons) undergraduate at the
+                  University of Colombo, building a career around{" "}
+                  <span className="text-cyan-300">
+                    DevOps, cloud, networking and full-stack
+                    engineering.
+                  </span>
+                </p>
 
-                    <div className="icon-tile flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-colors group-hover:border-cyan-300/25 group-hover:text-cyan-200">
-                      <Icon size={21} strokeWidth={1.6} />
-                    </div>
+                <p className="mt-6 text-sm leading-7 text-slate-400 sm:text-base sm:leading-8">
+                  My projects have given me experience across
+                  application development, deployment and
+                  infrastructure. I enjoy understanding what happens
+                  beyond the application itself — from source code
+                  and containers to networks, servers and production
+                  environments.
+                </p>
+              </div>
 
-                    <div className="min-w-0 flex-1">
-                      <div className="mb-2 flex items-center justify-between gap-3">
-                        <span className="font-mono text-[9px] tracking-[.18em] text-slate-600">
-                          {item.number} / FOCUS
-                        </span>
+              {/* Learning topics */}
+              <div className="mt-10 flex-1 border-t border-white/10 pt-6">
+                <div className="flex flex-wrap items-center gap-3">
+                  <h4 className="font-mono text-[10px] tracking-[0.18em] text-cyan-300">
+                    CURRENTLY LEARNING
+                  </h4>
 
-                        <ArrowUpRight
-                          size={14}
-                          className="shrink-0 text-slate-700 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyan-200"
-                        />
-                      </div>
+                  <span className="h-px w-8 bg-cyan-300/25" />
 
-                      <h3 className="font-semibold tracking-tight text-slate-100 transition-colors group-hover:text-cyan-100">
-                        {item.title}
-                      </h3>
+                  <span className="font-mono text-[10px] text-slate-600">
+                    2026
+                  </span>
+                </div>
 
-                      <p className="mt-2 text-sm leading-6 text-slate-400">
-                        {item.detail}
-                      </p>
-                    </div>
-                  </article>
-                </Reveal>
-              );
-            })}
-          </div>
+                <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {learningTopics.map((topic) => (
+                    <li
+                      key={topic}
+                      className="flex items-center gap-3 text-sm text-slate-300"
+                    >
+                      <span className="text-cyan-400">/</span>
+                      <span>{topic}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Career goal */}
+              <div className="mt-8 border-t border-white/10 pt-6">
+                <div className="flex items-start gap-3">
+                  <ArrowUpRight
+                    size={18}
+                    className="mt-1 shrink-0 text-cyan-300"
+                  />
+
+                  <p className="text-sm leading-7 text-slate-400">
+                    My goal is to grow from building applications
+                    into designing, automating and operating
+                    reliable systems.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
