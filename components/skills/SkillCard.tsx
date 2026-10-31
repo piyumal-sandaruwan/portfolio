@@ -1,7 +1,5 @@
-
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import type { SkillGroup } from "@/data/skill-data";
 
 type SkillCardProps = {
@@ -10,66 +8,75 @@ type SkillCardProps = {
 
 export function SkillCard({ group }: SkillCardProps) {
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-white/[.08] bg-white/[.012] p-6 transition-colors duration-300 hover:border-cyan-300/20 hover:bg-white/[.025] sm:p-7">
-      {/* Heading */}
-      <div className="flex items-start justify-between gap-4">
-        <h3 className="font-mono text-[10px] font-semibold uppercase tracking-[.2em] text-cyan-300 sm:text-[11px]">
-          {group.title}
-        </h3>
+    <article className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.07] bg-[#090c12]/80 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-[#0c1119] sm:p-6">
+      {/* Subtle hover accent */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-0 h-32 w-32 rounded-full bg-cyan-400/[0.035] blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      />
 
-        <div className="flex shrink-0 items-center gap-2">
-          <span className="h-px w-8 bg-cyan-300/15 transition-colors group-hover:bg-cyan-300/40" />
-          <span className="font-mono text-[9px] text-zinc-700">
+      <div className="relative">
+        {/* Card Header */}
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-200">
+            {group.title}
+          </h3>
+
+          <span className="font-mono text-[10px] text-zinc-700">
             {group.number}
           </span>
         </div>
-      </div>
 
-      {/* Description */}
-      <p className="mt-5 text-sm leading-7 text-zinc-500">
-        {group.description}
-      </p>
+        {/* Description */}
+        <p className="mt-3 max-w-2xl text-[13px] leading-6 text-zinc-500">
+          {group.description}
+        </p>
 
-      {/* Skills with icons */}
-      <div className="mt-6 flex flex-wrap gap-2">
-        {group.skills.map(({ name, icon: Icon }) => (
+        {/* Technologies */}
+        <div className="mt-5 flex flex-wrap gap-2">
+          {group.skills.map((skill) => {
+            const Icon = skill.icon;
+
+            return (
+              <span
+                key={skill.name}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.07] bg-white/[0.025] px-2.5 py-1.5 font-mono text-[10px] text-zinc-400 transition-colors duration-200 hover:border-cyan-300/25 hover:bg-cyan-300/[0.04] hover:text-cyan-200"
+              >
+                {Icon && (
+                  <Icon
+                    size={12}
+                    strokeWidth={1.5}
+                    className="shrink-0 text-zinc-500"
+                  />
+                )}
+
+                {skill.name}
+              </span>
+            );
+          })}
+        </div>
+
+        {/* Footer */}
+        <div className="mt-5 flex items-center gap-2 border-t border-white/[0.06] pt-3">
           <span
-            key={name}
-            className="inline-flex items-center gap-2 rounded-lg border border-white/[.08] bg-white/[.02] px-3 py-2 font-mono text-[10px] text-zinc-500 transition-colors hover:border-cyan-300/20 hover:text-zinc-300"
-          >
-            {Icon && (
-              <Icon
-                size={14}
-                strokeWidth={1.7}
-                className="shrink-0"
-                aria-hidden="true"
-              />
-            )}
-            {name}
+            className={`h-1.5 w-1.5 rounded-full ${
+              group.status === "HANDS-ON"
+                ? "bg-cyan-300"
+                : "bg-violet-400"
+            }`}
+          />
+
+          <span className="font-mono text-[9px] tracking-[0.16em] text-zinc-600">
+            {group.status}
           </span>
-        ))}
+
+          <span className="ml-auto h-px w-8 bg-white/[0.07]" />
+
+          <span className="font-mono text-[9px] text-zinc-700">
+            {String(group.skills.length).padStart(2, "0")} SKILLS
+          </span>
+        </div>
       </div>
-
-      {/* Footer */}
-      <div className="mt-auto flex items-center gap-2 pt-7">
-        <span className="h-1 w-1 rounded-full bg-cyan-400/70" />
-        <span className="h-px w-8 bg-white/[.07] transition-all group-hover:w-12 group-hover:bg-cyan-300/25" />
-
-        <span className="font-mono text-[8px] uppercase tracking-[.2em] text-zinc-700">
-          {group.status}
-        </span>
-
-        <ArrowUpRight
-          size={13}
-          className="ml-auto text-zinc-700 transition-colors group-hover:text-cyan-300"
-        />
-      </div>
-
-      {/* Bottom hover accent */}
-      <div
-        aria-hidden="true"
-        className="absolute bottom-0 left-0 h-px w-0 bg-cyan-300/40 transition-all duration-500 group-hover:w-full"
-      />
     </article>
   );
 }

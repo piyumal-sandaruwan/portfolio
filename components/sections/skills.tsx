@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Terminal } from "lucide-react";
@@ -24,28 +23,33 @@ export function Skills() {
         <Reveal>
           <SectionHeading
             index="02"
-            eyebrow="Stack"
+            eyebrow="STACK"
             title="Tools I build with."
             description="A practical technology stack built through coursework, personal projects and hands-on development."
           />
 
-          <div className="mt-7 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[.2em] text-zinc-700">
+          {/* Section metadata */}
+          <div className="mt-6 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[.18em] text-zinc-600">
             <Terminal
               size={13}
               className="text-cyan-300/70"
               strokeWidth={1.5}
             />
+
             <span>Technical capabilities</span>
-            <span className="h-px w-10 bg-cyan-300/15" />
+
+            <span className="h-px w-8 bg-cyan-300/15" />
+
             <span>
               {String(skillGroups.length).padStart(2, "0")} groups
             </span>
           </div>
         </Reveal>
 
-        <div className="mt-12 grid items-stretch gap-4 md:grid-cols-2">
+        {/* Compact skill cards */}
+        <div className="mt-9 grid items-stretch gap-4 md:grid-cols-2">
           {skillGroups.map((group, index) => (
-            <Reveal key={group.number} delay={index * 0.05}>
+            <Reveal key={group.number} delay={index * 0.04}>
               <SkillCard group={group} />
             </Reveal>
           ))}

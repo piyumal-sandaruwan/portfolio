@@ -56,36 +56,6 @@ export const gallery: ExtracurricularGalleryItem[] = [
     image: "/images/extracurricular/magazine-editors.jpg",
   },
   {
-    title: "Magazine Page",
-    category: "PUBLICATION",
-    image: "/images/extracurricular/magazin-page.jpg",
-  },
-  {
-    title: "Magazine Page 02",
-    category: "PUBLICATION",
-    image: "/images/extracurricular/magazine-pag2.jpg",
-  },
-  {
-    title: "Magazine Page 03",
-    category: "PUBLICATION",
-    image: "/images/extracurricular/magazine-pag3.jpg",
-  },
-  {
-    title: "Magazine Page 04",
-    category: "PUBLICATION",
-    image: "/images/extracurricular/magazine-pag4.jpg",
-  },
-  {
-    title: "Bak Poya Day",
-    category: "CREATIVE WORK",
-    image: "/images/extracurricular/bak-poya-day.jpg",
-  },
-  {
-    title: "Bee Day",
-    category: "CREATIVE WORK",
-    image: "/images/extracurricular/bee-day.jpg",
-  },
-  {
     title: "Certificate Award",
     category: "ACHIEVEMENTS",
     image: "/images/extracurricular/certificate-award.jpg",
