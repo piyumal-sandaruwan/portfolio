@@ -139,7 +139,7 @@ export function HeroContent({ reduced = false }: HeroContentProps) {
 
           <p>
             <span className="text-slate-600">focus: </span>
-            <span className="text-slate-300">DevOps / Cloud</span>
+            <span className="text-slate-300">DevOps / Cloud /Network /Full Stack</span>
           </p>
 
           <p>
