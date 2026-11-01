@@ -47,7 +47,8 @@ export function HeroVisual({ reduced = false }: HeroVisualProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       // className="relative mx-auto w-full max-w-[460px]"
-      className="relative mx-auto -mt-32 w-full max-w-[460px]"
+      // className="relative mx-auto -mt-32 w-full max-w-[460px]"
+      className="relative mx-auto mt-0 w-full max-w-[460px] translate-y-2"
     >
       <div className="relative aspect-square w-full">
         {/* Simple portrait frame */}

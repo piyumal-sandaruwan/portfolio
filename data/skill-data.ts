@@ -38,8 +38,7 @@ export const skillGroups: SkillGroup[] = [
   {
     number: "01",
     title: "Full Stack Development",
-    description:
-      "Building web applications with React, Next.js and the MERN stack through academic and personal projects.",
+    description: "Building modern web applications using React, Next.js and the MERN stack.",
     status: "HANDS-ON",
     skills: [
       { name: "React", icon: Atom },
@@ -55,8 +54,7 @@ export const skillGroups: SkillGroup[] = [
   {
     number: "02",
     title: "Java & Backend",
-    description:
-      "Working with Java backend development, object-oriented programming and REST API fundamentals.",
+    description: "Developing backend services, REST APIs and database-driven applications.",
     status: "HANDS-ON",
     skills: [
       { name: "Java", icon: Coffee },
@@ -70,8 +68,7 @@ export const skillGroups: SkillGroup[] = [
   {
     number: "03",
     title: "Android Development",
-    description:
-      "Building Android applications with Java and Firebase-based services through mobile development projects.",
+    description: "Creating Android applications using Java and Firebase services.",
     status: "HANDS-ON",
     skills: [
       { name: "Android", icon: Smartphone },
@@ -84,8 +81,7 @@ export const skillGroups: SkillGroup[] = [
   {
     number: "04",
     title: "DevOps & Cloud",
-    description:
-      "Working with containerization, CI/CD pipelines, Linux servers, reverse proxies and cloud platforms.",
+    description: "Working with Docker, CI/CD automation, Linux servers and cloud infrastructure.",
     status: "HANDS-ON",
     skills: [
       { name: "Docker", icon: Container },
@@ -101,8 +97,7 @@ export const skillGroups: SkillGroup[] = [
   {
     number: "05",
     title: "Networks & Security",
-    description:
-      "Exploring networking fundamentals, connectivity, Linux systems and practical security concepts.",
+    description: "Exploring network protocols, connectivity and practical security tools.",
     status: "LEARNING",
     skills: [
       { name: "Networking", icon: Network },
@@ -114,8 +109,7 @@ export const skillGroups: SkillGroup[] = [
   {
     number: "06",
     title: "Infrastructure & Automation",
-    description:
-      "Learning infrastructure automation, container orchestration, configuration management and monitoring.",
+    description: "Exploring orchestration, infrastructure automation and monitoring tools.",
     status: "LEARNING",
     skills: [
       { name: "Kubernetes", icon: Layers },
